@@ -1,38 +1,18 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
+import TestNgTests.BaseUiTests;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 import static org.testng.Assert.assertEquals;
 
-public class GuruLoginTest {
-    WebDriver driver;
-    WebDriverWait wait;
-
+public class GuruLoginTest extends BaseUiTests {
     String loginUrl = "http://demo.guru99.com/Agile_Project/Agi_V1/index.php";
     String login = "1303";
     String password = "Guru99";
     String loginBtn = "//input[@name='btnLogin']";
     String invalidCredentials = "User or Password is not valid";
-
-    @BeforeSuite
-    public void setupDriver() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 10);
-    }
-
-    @AfterSuite
-    public void closeDriver() {
-        driver.quit();
-    }
 
     @BeforeMethod
     public void navigateToUrl() {
