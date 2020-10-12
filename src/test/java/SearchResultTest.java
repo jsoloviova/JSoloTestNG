@@ -23,8 +23,6 @@ public class SearchResultTest extends BaseUiTests {
         driver.findElement(By.name("q")).sendKeys("iphone kyiv buy" + Keys.ENTER);
         wait.until(presenceOfElementLocated(By.cssSelector("#result-stats")));
 
-
-
         try {
             for (int i = 0; i < 5; i++) {
                 List<WebElement> linksResult = driver.findElements(By.className("iUh30 gBIQub bc tjvcx"));
