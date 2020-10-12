@@ -8,10 +8,11 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
+import static org.testng.Assert.assertEquals;
 
 public class SearchResultTest extends BaseUiTests {
     String url = "https://www.google.com/";
-    String linkText = "stylus.ua";
+    String linkText = "qweqwe"; // additional check for comfy.ua
 
     @BeforeMethod
     public void navigateToUrl() {
@@ -26,7 +27,7 @@ public class SearchResultTest extends BaseUiTests {
         for (int i = 0; i < 5; i++) {
             List<WebElement> linksResult = driver.findElements(By.partialLinkText(linkText));
             int numberOfLinks = linksResult.size();
-            if (numberOfLinks == 1) {
+            if (numberOfLinks >= 1) {
                 System.out.println("STYLUS.UA found on " + (i + 1) + " page");
                 break;
             }
@@ -34,6 +35,11 @@ public class SearchResultTest extends BaseUiTests {
                 driver.findElement(By.id("pnnext")).click();
                 wait.until(presenceOfElementLocated(By.cssSelector("#result-stats")));
             }
+            if (numberOfLinks == 0 && i == 4) {
+                System.out.println("STYLUS.UA not found on first 5 pages");
+            }
         }
+        WebElement result = driver.findElement(By.partialLinkText(linkText));
+        System.out.println(result.getText());
     }
 }
