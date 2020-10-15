@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
+import static org.testng.Assert.assertTrue;
 
 public class priceFilterTest extends BaseUiTests {
     String url = "https://rozetka.com.ua/";
@@ -38,14 +39,14 @@ public class priceFilterTest extends BaseUiTests {
         wait.until(presenceOfElementLocated(productAppeared));
 
         List<WebElement> searchPricesResult = driver.findElements(By.cssSelector("span.goods-tile__price-value"));
-        for (WebElement we : searchPricesResult) {
-            int price = Integer.parseInt(we.getText().replaceAll(" ", ""));
-            if (price > 5000 && price < 15000) {
-            } else {
-                System.out.println("Some product is outside the price range!");
+        try {
+            for (WebElement we : searchPricesResult) {
+                int price = Integer.parseInt(we.getText().replaceAll(" ", ""));
+                assertTrue(price > 5000 && price < 15000);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        System.out.println("all products are in [5000-15000] price range");
-
+            System.out.println("All products are in [5000-15000] price range");
     }
 }

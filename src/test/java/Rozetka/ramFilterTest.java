@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
+import static org.testng.Assert.assertTrue;
 
 public class ramFilterTest extends BaseUiTests {
     String url = "https://rozetka.com.ua/";
@@ -40,11 +41,12 @@ public class ramFilterTest extends BaseUiTests {
         Thread.sleep(3000);
 
         List<WebElement> searchTitlesResult = driver.findElements(By.cssSelector("span.goods-tile__title"));
-        for (WebElement we : searchTitlesResult) {
-            if (we.getText().contains("6/")) {
-            } else {
-                System.out.println("Some product has not 6Gb RAM!");
+        try {
+            for (WebElement we : searchTitlesResult) {
+                assertTrue(we.getText().contains("6/"));
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         System.out.println("All products have 6Gb RAM");
 

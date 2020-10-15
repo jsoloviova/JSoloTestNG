@@ -11,6 +11,7 @@ import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class manufacturerFilterTest extends BaseUiTests {
     String url = "https://rozetka.com.ua/";
@@ -38,12 +39,13 @@ public class manufacturerFilterTest extends BaseUiTests {
 
 
         List<WebElement> searchTitlesResult = driver.findElements(By.cssSelector("span.goods-tile__title"));
-        for (WebElement we : searchTitlesResult) {
-            if (we.getText().contains("Apple") || we.getText().contains("Honor") || we.getText().contains("Samsung")) {
-            } else {
-                System.out.println("Some product is not Apple, Honor or Samsung made!");
+        try {
+            for (WebElement we : searchTitlesResult) {
+                assertTrue(we.getText().contains("Apple") || we.getText().contains("Honor") || we.getText().contains("Samsung"));
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        System.out.println("all products are Apple, Honor or Samsung made");
+        System.out.println("All products are Apple, Honor or Samsung made");
     }
 }
