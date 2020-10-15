@@ -1,11 +1,12 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Smoke suite" configfailurepolicy="continue" >
-    <parameter name="one" value="Test two parameter"/>
     <test name="Main test">
         <classes>
-            <class name="L23Tests.GuruLoginTest"/>
-            <class name="L23Tests.SearchResultTest"/>
+            <class name="Rozetka.MonitorsComparisonTest"/>
+            <class name="Rozetka.manufacturerFilterTest"/>
+            <class name="Rozetka.priceFilterTest"/>
+            <class name="Rozetka.ramFilterTest"/>
         </classes>
     </test>
 </suite>

@@ -1,3 +1,5 @@
+package L23Tests;
+
 import TestNgTests.BaseUiTests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
