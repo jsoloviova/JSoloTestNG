@@ -41,13 +41,9 @@ public class ramFilterTest extends BaseUiTests {
         Thread.sleep(3000);
 
         List<WebElement> searchTitlesResult = driver.findElements(By.cssSelector("span.goods-tile__title"));
-        try {
             for (WebElement we : searchTitlesResult) {
                 assertTrue(we.getText().contains("6/"));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         System.out.println("All products have 6Gb RAM");
 
     }

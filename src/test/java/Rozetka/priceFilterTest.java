@@ -39,14 +39,10 @@ public class priceFilterTest extends BaseUiTests {
         wait.until(presenceOfElementLocated(productAppeared));
 
         List<WebElement> searchPricesResult = driver.findElements(By.cssSelector("span.goods-tile__price-value"));
-        try {
             for (WebElement we : searchPricesResult) {
                 int price = Integer.parseInt(we.getText().replaceAll(" ", ""));
                 assertTrue(price > 5000 && price < 15000);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
             System.out.println("All products are in [5000-15000] price range");
     }
 }

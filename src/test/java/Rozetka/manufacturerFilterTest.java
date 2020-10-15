@@ -39,13 +39,10 @@ public class manufacturerFilterTest extends BaseUiTests {
 
 
         List<WebElement> searchTitlesResult = driver.findElements(By.cssSelector("span.goods-tile__title"));
-        try {
+
             for (WebElement we : searchTitlesResult) {
                 assertTrue(we.getText().contains("Apple") || we.getText().contains("Honor") || we.getText().contains("Samsung"));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         System.out.println("All products are Apple, Honor or Samsung made");
     }
 }
