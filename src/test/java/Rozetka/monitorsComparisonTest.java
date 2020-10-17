@@ -13,7 +13,7 @@ import java.util.List;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 import static org.testng.Assert.assertEquals;
 
-public class MonitorsComparisonTest extends BaseUiTests {
+public class monitorsComparisonTest extends BaseUiTests {
     String url = "https://rozetka.com.ua/";
 
     @BeforeMethod
