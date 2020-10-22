@@ -3,6 +3,7 @@ package Rozetka1_FactoryPages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class AddAndCheckComparisonFactoryPage {
     public AddAndCheckComparisonFactoryPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         this.wait = new WebDriverWait(webDriver, 5);
+        PageFactory.initElements(webDriver, this);
     }
 
     @FindBy(css = "a.goods-tile__picture")

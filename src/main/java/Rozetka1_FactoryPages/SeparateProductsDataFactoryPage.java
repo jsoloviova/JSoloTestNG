@@ -3,6 +3,7 @@ package Rozetka1_FactoryPages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SeparateProductsDataFactoryPage {
@@ -10,6 +11,7 @@ public class SeparateProductsDataFactoryPage {
 
     public SeparateProductsDataFactoryPage(WebDriver webDriver) {
         this.webDriver = webDriver;
+        PageFactory.initElements(webDriver, this);
     }
 
     @FindBy(xpath = "//p[@class='product-prices__big product-prices__big_color_red']")

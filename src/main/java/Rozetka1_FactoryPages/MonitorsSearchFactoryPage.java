@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
@@ -15,6 +16,7 @@ public class MonitorsSearchFactoryPage {
     public MonitorsSearchFactoryPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         this.wait = new WebDriverWait(webDriver, 10);
+        PageFactory.initElements(webDriver, this);
     }
 
     @FindBy(xpath = "//aside//a[contains(@href,'computers-notebooks')]")

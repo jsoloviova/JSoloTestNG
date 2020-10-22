@@ -3,12 +3,14 @@ package Rozetka1_FactoryPages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class ComparisonProdsDataFactoryPage {
     WebDriver webDriver;
 
     public ComparisonProdsDataFactoryPage(WebDriver webDriver) {
         this.webDriver = webDriver;
+        PageFactory.initElements(webDriver, this);
     }
 
     @FindBy(xpath = "//li[1]//div[contains(@class,'product__price--red')]")
