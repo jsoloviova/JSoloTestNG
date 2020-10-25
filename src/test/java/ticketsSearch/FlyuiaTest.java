@@ -40,10 +40,8 @@ public class FlyuiaTest {
         $$x("//button[contains(@class,'set-val-btn')]").get(1).click();
         $(By.id("SEARCH_WIDGET_FORM_BUTTONS_SEARCH_FLIGHTS")).click();
 
-        //switchTo().window(1);
-        //System.out.println(switchTo().activeElement().getText());
-        switchTo().defaultContent();
-        $x("//i.icon-close").click();
+        switchTo().window("Search results");
+        $("i.icon-close").click();
 
         $$x("//div[contains(@class,'flights-section')]/div").shouldHaveSize(2);
         $$x("//button/div[@class='date-title']").get(3).shouldHave(Condition.text("Thu, 19 Nov"));
