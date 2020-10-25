@@ -45,7 +45,7 @@ public class FlyuiaTest {
 
         $$x("//div[contains(@class,'flights-section')]/div").shouldHaveSize(2);
         $$x("//button/div[@class='date-title']").get(6).shouldHave(Condition.text("Thu, 19 Nov"));
-        $$(".flight-select__flight-info__day").get(19).shouldHave(Condition.text("Sun, 22 Nov"));
+        $$x("//button/div[@class='date-title']").get(19).shouldHave(Condition.text("Sun, 22 Nov"));
 
     }
 }
