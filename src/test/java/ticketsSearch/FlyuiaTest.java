@@ -30,8 +30,10 @@ public class FlyuiaTest {
 
         $x("//sw-form-control-datepicker[@formcontrolname='departureDate']").click();
         $$x("//span[@class='prev-next-btn']").get(1).click();
+        $("span.checkmark").click();
         $x("//button[contains(text(),'19')]").click();
         $x("//sw-form-control-datepicker[@formcontrolname='returnDate']").click();
+        $("span.checkmark").click();
         $x("//button[contains(text(),'22')]").click();
 
         $x("//sw-form-control-passengers[@formcontrolname='passengers']").click();
@@ -44,8 +46,8 @@ public class FlyuiaTest {
         $x("//i.icon-close").click();
 
         $$x("//div[contains(@class,'flights-section')]/div").shouldHaveSize(2);
-        $$x("//button/div[@class='date-title']").get(6).shouldHave(Condition.text("Thu, 19 Nov"));
-        $$x("//button/div[@class='date-title']").get(19).shouldHave(Condition.text("Sun, 22 Nov"));
+        $$x("//button/div[@class='date-title']").get(3).shouldHave(Condition.text("Thu, 19 Nov"));
+        $$x("//button/div[@class='date-title']").get(10).shouldHave(Condition.text("Sun, 22 Nov"));
 
     }
 }
