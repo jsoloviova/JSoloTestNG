@@ -34,6 +34,10 @@ public class RyanairTest {
         $x(("//button[@aria-label='Search']")).click();
 
         $$x("//div[@class='journeys-wrapper']/div").shouldHaveSize(2);
+        $$x("//h3[@class='header__title']").get(0).shouldHave(Condition.text(" Vienna to Kyiv  "));
+        $$x("//div[contains(@class,'date-item__day-of-week')]").get(7).scrollTo();
+        $$x("//h3[@class='header__title']").get(1).shouldHave(Condition.text(" Kyiv to Vienna  "));
+
         $$x("//div/span[contains(@class,'date-item__day-of-month')]").get(2).shouldHave(Condition.text("19"));
         $$x("//div/span[contains(@class,'date-item__month')]").get(2).shouldHave(Condition.text("Nov"));
         $$x("//div[contains(@class,'date-item__day-of-week')]").get(2).shouldHave(Condition.text(" Thursday "));

@@ -38,9 +38,15 @@ public class WizzairTest {
         switchTo().window(1);
 
         $$(".flight-select__fare-selector").shouldHaveSize(2);
+        $$x("//address[@class='flight-select__flight__title-container__title heading heading--3']").get(0)
+                .shouldHave(Condition.text(" Vienna\n" + " (VIE)  Kyiv - Zhulyany (IEV) "));
+        $$(".flight-select__flight-info__day").get(1).scrollTo();
+        $$x("//address[@class='flight-select__flight__title-container__title heading heading--3']").get(1)
+                .shouldHave(Condition.text(" Kyiv - Zhulyany (IEV)  Vienna\n" +
+                        " (VIE) "));
+
         $$(".flight-select__flight-info__day").get(0).shouldHave(Condition.text(" Thu, 19 Nov 2020 "));
         $$(".flight-select__flight-info__day").get(1).scrollTo();
-        //or $x("//button[@type='submit']").scrollTo();
         $$(".flight-select__flight-info__day").get(1).shouldHave(Condition.text(" Sun, 22 Nov 2020 "));
 
     }

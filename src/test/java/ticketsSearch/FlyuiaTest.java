@@ -44,6 +44,8 @@ public class FlyuiaTest {
         $("i.icon-close").click();
 
         $$x("//div[contains(@class,'flights-section')]/div").shouldHaveSize(2);
+        $$x("//div[@class='product__title']").get(0).shouldHave(Condition.text("Departure Options: Vienna - Kyiv"));
+        $$x("//div[@class='product__title']").get(1).shouldHave(Condition.text("Return Options: Kyiv - Vienna"));
         $$x("//button/div[@class='date-title']").get(3).shouldHave(Condition.text("Thu, 19 Nov"));
         $$x("//button/div[@class='date-title']").get(10).shouldHave(Condition.text("Sun, 22 Nov"));
 
