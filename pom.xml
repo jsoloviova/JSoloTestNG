@@ -26,6 +26,12 @@
         </profile>
     </profiles>
 
+    <properties>
+        <allure.version>2.13.2</allure.version>
+        <java.version>1.8</java.version>
+        <aspectj.version>1.9.5</aspectj.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
@@ -33,6 +39,7 @@
             <version>6.14.3</version>
             <scope>test</scope>
         </dependency>
+
 <!--        <dependency>-->
 <!--            <groupId>org.seleniumhq.selenium</groupId>-->
 <!--            <artifactId>selenium-java</artifactId>-->
@@ -66,15 +73,77 @@
             <scope>test</scope>
         </dependency>
 
-
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>2.13.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-rest-assured</artifactId>
+            <version>2.13.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.14.3</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>4.3.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.17.2</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
-
         <filters>
             <filter>src/main/resources/env/config.${env}.properties</filter>
         </filters>
         <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
+                <configuration>
+                    <reportVersion>2.13.0</reportVersion>
+                    <resultsDirectory>${project.basedir}/target/allure-results</resultsDirectory>
+                    <reportDirectory>${project.basedir}/target/allure-reports</reportDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+
+                </dependencies>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -83,6 +152,7 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+
         </plugins>
 
         <resources>
@@ -96,5 +166,18 @@
         </resources>
     </build>
 
+    <reporting>
+    <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
+                <configuration>
+                    <reportVersion>${allure.version}</reportVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>

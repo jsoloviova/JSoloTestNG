@@ -1,0 +1,10 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="API Allure suite" configfailurepolicy="continue" >
+    <test name="Main test">
+        <classes>
+            <class name="allure.apiAllure.RestApiPositiveAllureTest"/>
+            <class name="allure.apiAllure.RestApiNegativeAllureTest"/>
+        </classes>
+    </test>
+</suite>
